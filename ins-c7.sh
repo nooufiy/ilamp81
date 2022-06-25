@@ -42,7 +42,7 @@ aspell dump dicts
 yum install -y gcc php-devel php-pear
 yum install -y ImageMagick ImageMagick-devel
 yes | pecl install imagick
-echo "extension=imagick.so" > /etc/php.d/imagick.ini
+#echo "extension=imagick.so" > /etc/php.d/imagick.ini
 systemctl restart httpd.service
 convert -version
 yum -y install libtool httpd-devel
