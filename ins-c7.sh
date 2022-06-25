@@ -10,8 +10,8 @@ echo "-"
 
 yum install screen -y
 yum -y install nano
-rm -rf ~/.bashrc
-nano ~/.bashrc
+#rm -rf ~/.bashrc
+#nano ~/.bashrc
 yum -y install httpd zip unzip git
 systemctl start httpd.service
 systemctl enable httpd.service
