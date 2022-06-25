@@ -32,12 +32,10 @@ yum -y install epel-release
 rpm -Uvh http://rpms.remirepo.net/enterprise/remi-release-7.rpm
 yum -y install yum-utils
 yum -y update
-#yum-config-manager --enable remi-php74
 yum-config-manager --enable remi-php81
 yum -y install php
 systemctl restart httpd.service
-#yum install -y php74-php-cli.x86_64 php74-php-fpm.x86_64 php74-php-gd.x86_64 php74-php-geos.x86_64 php74-php-json.x86_64 php74-php-mbstring.x86_64 php74-php-mcrypt.x86_64 php74-php-opcache.x86_64 php74-php-xml.x86_64 php74-php-xmlrpc.x86_64
-yum install php-fpm php-curl php-cli php-json php-mysql php-opcache php-dom php-exif php-fileinfo php-zip php-mbstring php-hash php-imagick php-openssl php-pcre php-xml php-bcmath php-filter php-pear php-gd php-mcrypt php-intl php-iconv php-zlib php-xmlreader
+yum install -y php-fpm php-curl php-cli php-json php-mysql php-opcache php-dom php-exif php-fileinfo php-zip php-mbstring php-hash php-imagick php-openssl php-pcre php-xml php-bcmath php-filter php-pear php-gd php-mcrypt php-intl php-iconv php-zlib php-xmlreader
 systemctl restart httpd.service
 php -v
 yum -y install php-pspell
