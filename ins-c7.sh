@@ -47,6 +47,7 @@ systemctl restart httpd.service
 convert -version
 yum -y install libtool httpd-devel
 cd /tmp
+yum install wget -y
 #wget https://www.cloudflare.com/static/misc/mod_cloudflare/mod_cloudflare.c
 wget https://raw.githubusercontent.com/cloudflare/mod_cloudflare/master/mod_cloudflare.c
 apxs -a -i -c mod_cloudflare.c
@@ -59,5 +60,7 @@ mv /etc/logrotate.d/httpd /etc/logrotate.d/httpd.bak
 cd /etc/logrotate.d
 wget https://raw.githubusercontent.com/nooufiy/ilamp81/main/httpd
 sed -i "s/\/var\/www\/html/\/home\/w/g" /etc/httpd/conf/httpd.conf
-chcon -R system_u:object_r:httpd_sys_content_t /home/w
+chcon -R -t httpd_sys_rw_content_t /home/{w,l}
+chcon -R system_u:object_r:httpd_sys_content_t /home/{w,l}
+> /var/www/html/index.html
 systemctl restart httpd.service
