@@ -1,10 +1,18 @@
-/home/l/*log {
+/home/l/access_log
+/home/l/ssl_request_log
+/home/l/ssl_access_log
+/home/l/error_log
+/home/l/ssl_error_log
+{
+    daily
     missingok
-    notifempty
-    sharedscripts
+    rotate 7
+    compress
     delaycompress
-    minsize 1M
+    notifempty
+    create 640 root adm
+    sharedscripts
     postrotate
-        /bin/systemctl reload httpd.service > /dev/null 2>/dev/null || true
+        /bin/systemctl reload httpd >/dev/null 2>&1 || true
     endscript
 }
